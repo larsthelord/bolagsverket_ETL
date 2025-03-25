@@ -15,7 +15,7 @@ There are three final outputs for bolagsverket:
 
 And one final output for SCB:
 
-- fina_scb:
+- final_scb:
     - Main file containing one line for every Person/Organization from Swedish Statistics Office PersonOrganizationNumber is the primary key
 
 
