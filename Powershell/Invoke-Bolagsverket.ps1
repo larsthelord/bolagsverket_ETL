@@ -34,12 +34,15 @@ $null = $DuckdbCommand.ExecuteNonQuery()
 $DuckdbCommand.CommandText = (Get-Content ".\SqlQueries\unpack_postal_address.sql")
 $null = $DuckdbCommand.ExecuteNonQuery()
 
+
+#Create a reader for the final file
 $DuckdbCommand.CommandText = (Get-Content ".\SqlQueries\final_bolagsverket.sql")
 $Reader = $DuckdbCommand.ExecuteReader()
 
 #Do What you want with the result. For example write to datatable:
 $Datatable = [System.Data.DataTable]::new()
 $Datatable.Load($Reader)
+
 
 
 #Cleanup and remove files

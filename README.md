@@ -2,6 +2,8 @@
 Download and transform of data-files from Bolagsverket in Sweden using DuckDB and powershell.
 I did this because the structure of the downloadable files is horible.
 
+There are two PowerShell-scripts downloading the Bolagsverket-file and SCB-file and then using duckdb to perform a transformation.
+
 There are three final outputs for bolagsverket: 
 
 - final_bolagsverket:
