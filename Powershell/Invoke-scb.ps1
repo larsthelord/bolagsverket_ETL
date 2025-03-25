@@ -40,7 +40,7 @@ try{
 }
 
 Remove-Item $ScbFile.FullName
-
+$ScbFile = Get-Item ".\scb_bulkfil.tsv"
 Add-Type -Path ".\Powershell\duckdb\DuckDB.NET.Data.dll"
 Add-Type -Path ".\Powershell\duckdb\DuckDB.NET.Bindings.dll"
 
@@ -48,11 +48,16 @@ $DuckDbConnection = [DuckDB.NET.Data.DuckDBConnection]::new("DataSource = :memor
 $DuckDbConnection.Open()
 $DuckdbCommand = $DuckDbConnection.CreateCommand()
 $DuckdbCommand.CommandTimeout = 0
-
-$DuckdbCommand.CommandText = (Get-Content ".\SqlQueries\read_scb.sql").Replace("<<FILEPATH>>", ".\scb_bulkfil.tsv")
+#Read scv-file with duckdb
+$DuckdbCommand.CommandText = (Get-Content ".\SqlQueries\read_scb.sql").Replace("<<FILEPATH>>", $ScbFile.FullName)
 $null = $DuckdbCommand.ExecuteNonQuery()
 
+#Run transformation on scb and load into datable
 $DuckdbCommand.CommandText = (Get-Content ".\SqlQueries\final_scb.sql")
 $Reader = $DuckdbCommand.ExecuteReader()
 $Datatable = [System.Data.DataTable]::new()
 $Datatable.Load($Reader)
+
+
+#Cleanup and remove files
+Remove-Item -Path $ScbFile.FullName -Force
