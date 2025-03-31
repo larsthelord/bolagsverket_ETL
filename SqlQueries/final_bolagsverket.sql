@@ -1,4 +1,4 @@
-select 
+SELECT
     LEFT(b.organisationsidentitet, instr(b.organisationsidentitet, '$') - 1) as OrganizationIdentity,
     CASE 
         WHEN RIGHT(b.organisationsidentitet, LEN(b.organisationsidentitet) - instr(b.organisationsidentitet, '$')) = 'ORGNR-IDORG' THEN 'Organisationsnummer'
@@ -24,7 +24,7 @@ select
     po.PostStad as PostalCity,
     po.PostNummer as PostalNumber,
     po.PostLand as PostalCountry
-from 
+FROM
     bolagsverket b
 LEFT OUTER JOIN
     organisationsnamn orgnamn

@@ -8,7 +8,7 @@ FROM
     bolagsverket;
 
 CREATE OR REPLACE TABLE postadress as
-select
+SELECT
     organisationsidentitet,
     MAX(CASE WHEN indeks = 1 THEN objekt ELSE NULL END::VARCHAR) as postAdress,
     MAX(CASE WHEN indeks = 2 THEN objekt ELSE NULL END::VARCHAR) as CoAdress,
