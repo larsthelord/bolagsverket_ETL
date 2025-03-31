@@ -1,4 +1,4 @@
-# Bolagsverket
+# Bolagsverket and SCB ETL
 
 ## English
 Download and ETL-process of data-files from Bolagsverket in Sweden using DuckDB and powershell.
@@ -44,3 +44,9 @@ Og en endelig tabell for SCB:
 # Links to DuckDB
 This project uses [DuckDB](https://duckdb.org/) and [DuckDb.net](https://duckdb.net/).
 The .dll-files included in this project is of version 1.2.1
+
+
+# Did I make your life easier?
+Why not buy me a coffee
+
+![Buy me a coffee](./corporateshill/bmc_qr_small.png)
